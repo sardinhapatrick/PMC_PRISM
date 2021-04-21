@@ -1,8 +1,0 @@
-const int x;
-
-// event @input or1 cause fail system
-Pmax=? [ F a_or1=1 & tle=1 ]
-
-Pmax=? [ F b_or1=1 & tle=1 ]
-
-Pmax=? [ F b_and1=1 & tle=1 ]

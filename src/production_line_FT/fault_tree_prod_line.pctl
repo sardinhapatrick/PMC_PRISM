@@ -1,16 +1,16 @@
 const int x;
 
 // event @input or1 cause fail system
-P=? [ F a_or1=1 & tle=1 & t>5 ]
-P=? [ F b_or1=1 & tle=1 ]
+P=? [ F a_or1=1 & tle=1 & t<20 ]
+P=? [ F b_or1=1 & tle=1 & t<20 ]
 
-P=? [ F a_or2=1 & tle=1 ]
-P=? [ F b_or2=1 & tle=1 ]
+P=? [ F a_or2=1 & tle=1 & t<20 ]
+P=? [ F b_or2=1 & tle=1 & t<20 ]
 
-P=? [ F a_or4=1 & tle=1 ]
-P=? [ F b_or4=1 & tle=1 ]
+P=? [ F a_or4=1 & tle=1 & t<20 ]
+P=? [ F b_or4=1 & tle=1 & t<20 ]
 
-P=? [ F a_or5=1 & tle=1 ]
-P=? [ F b_or5=1 & tle=1 ]
+P=? [ F a_or5=1 & tle=1 & t<20 ]
+P=? [ F b_or5=1 & tle=1 & t<20 ]
 
-P=? [ F b_or7=1 & tle=1 ]
+P=? [ F b_or7=1 & tle=1 & t<20 ]

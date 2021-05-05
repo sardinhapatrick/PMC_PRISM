@@ -1,24 +1,24 @@
 const int x;
 
 // event @first input or1 cause fail system before tf
-P=? [ F a_or1=1 & tle=1 & tf<20 ]
+P=? [ F a_or1=1 & tle=1 & tf<24 ]
 // event @second input or1 cause fail system before tf
-P=? [ F b_or1=1 & tle=1 & tf<20 ]
+P=? [ F b_or1=1 & tle=1 & tf<24 ]
 
 // event @first input or2 cause fail system before tf
-P=? [ F a_or2=1 & tle=1 & tf<20 ]
+P=? [ F a_or2=1 & tle=1 & tf<24 ]
 // event @second input or2 cause fail system before tf
-P=? [ F b_or2=1 & tle=1 & tf<20 ]
+P=? [ F b_or2=1 & tle=1 & tf<24 ]
 
 // event @first input or4 cause fail system before tf
-P=? [ F a_or4=1 & tle=1 & tf<20 ]
+P=? [ F a_or4=1 & tle=1 & tf<24 ]
 // event @second input or4 cause fail system before tf
-P=? [ F b_or4=1 & tle=1 & tf<20 ]
+P=? [ F b_or4=1 & tle=1 & tf<24 ]
 
-// event @first input or5 cause fail system before tf
-P=? [ F a_or5=1 & tle=1 & tf<20 ]
+// event @first input or5 caus3 fail system before tf
+P=? [ F a_or5=1 & tle=1 & tf<24 ]
 // event @second input or5 cause fail system before tf
-P=? [ F b_or5=1 & tle=1 & tf<20 ]
+P=? [ F b_or5=1 & tle=1 & tf<24 ]
 
 // event @second input or7 cause fail system before tf
-P=? [ F b_or7=1 & tle=1 & tf<20 ]
+P=? [ F b_or7=1 & tle=1 & tf<24 ]

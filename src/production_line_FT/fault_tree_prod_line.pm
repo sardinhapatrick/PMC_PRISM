@@ -1,15 +1,15 @@
 ctmc
 
 global t1: [0..30] init 0;
-const max_t1 =10;
+const max_t1 = 20;
 global t2: [0..30] init 0;
-const max_t2 = 10;
+const max_t2 = 20;
 global t3: [0..30] init 0;
 const max_t3 = 20;
 global t4: [0..30] init 0;
-const max_t4 = 10;
+const max_t4 = 20;
 global t5: [0..30] init 0;
-const max_t5 = 10;
+const max_t5 = 20;
 global t6: [0..30] init 0;
 const max_t6 = 20;
 global t7: [0..30] init 0;
@@ -209,7 +209,6 @@ endmodule
 
 module or_gate7_bis
     [] (or7=1) & (c_or3=0) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> 0.25: (b_or7'=1) & (or7'=2) + 0.75: (or7'=1);
-    [] (or7=1) & (c_or3=1) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> (a_or7'=1) & (or7'=2);
     [] (a_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (a_or7'=1) + 0.9: (p7'=1) & (t7'=t3+1);
     [] (b_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (b_or7'=1) + 0.9: (p7'=1) & (t7'=t3+1);
 

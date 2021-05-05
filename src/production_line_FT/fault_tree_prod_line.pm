@@ -1,7 +1,7 @@
 ctmc
 
 global t1: [0..30] init 0;
-const max_t2: 10;
+const max_t2 =10;
 global t2: [0..30] init 0;
 const max_t2 = 10;
 global t3: [0..30] init 0;

@@ -1,13 +1,13 @@
 ctmc
 
-const max_t1 = 10;
-const max_t2 = 10;
-const max_t3 = 10;
-const max_t4 = 10;
-const max_t5 = 10;
-const max_t6 = 10;
-const max_t7 = 10;
-const max_tf = 10;
+const max_t1 = 20;
+const max_t2 = 20;
+const max_t3 = 20;
+const max_t4 = 20;
+const max_t5 = 20;
+const max_t6 = 20;
+const max_t7 = 20;
+const max_tf = 20;
 const marge = 5;
 
 global t1: [0..max_t1+marge] init 0;

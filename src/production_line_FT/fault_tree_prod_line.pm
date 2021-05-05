@@ -1,21 +1,23 @@
 ctmc
 
-global t1: [0..30] init 0;
 const max_t1 = 20;
-global t2: [0..30] init 0;
 const max_t2 = 20;
-global t3: [0..30] init 0;
 const max_t3 = 20;
-global t4: [0..30] init 0;
 const max_t4 = 20;
-global t5: [0..30] init 0;
 const max_t5 = 20;
-global t6: [0..30] init 0;
 const max_t6 = 20;
-global t7: [0..30] init 0;
 const max_t7 = 20;
-global tf: [0..30] init 0;
 const max_tf = 20;
+const marge = 50;
+
+global t1: [0..max_t1+marge] init 0;
+global t2: [0..max_t2+marge] init 0;
+global t3: [0..max_t3+marge] init 0;
+global t4: [0..max_t4+marge] init 0;
+global t5: [0..max_t5+marge] init 0;
+global t6: [0..max_t6+marge] init 0;
+global t7: [0..max_t7+marge] init 0;
+global tf: [0..max_tf+marge] init 0;
 
 global or1 : [0..2] init 0;
 global or2 : [0..2] init 0;
@@ -44,7 +46,6 @@ global c_or3 : [0..1] init 0;
 global m3 : [0..1] init 0;
 global p3 : [0..3] init 0;
 global v3 : [0..1] init 0;
-
 
 global or4 : [0..2] init 0;
 global or5 : [0..2] init 0;
@@ -136,7 +137,7 @@ module or_gate2
     [] (p2=1) & (b_or2=1) & (c_or2=0) & (t2<max_t2) -> (c_or2'=1) & (v2'=1) & (t2'=t2+1);
 endmodule
 
-module or_gate3
+module or_gate3_mask
     [] (a_or3=1) & (c_or3=0) & (p3=0) & (m3=0) & (v2=1) & (t3<max_t3) -> 0.1: (m3'=1) & (t3'=max(t1,t2)+1) & (a_or3'=0) + 0.9: (a_or3'=1);
     [] (b_or3=1) & (c_or3=0) & (p3=0) & (m3=0) & (v1=1) & (t3<max_t3) -> 0.1: (m3'=1) & (t3'=max(t1,t2)+1) & (b_or3'=0) + 0.9: (b_or3'=1);
 
@@ -146,7 +147,7 @@ module or_gate3
     & (t1'=t3) & (t2'=t3);
 endmodule
 
-module or_gate3_bis
+module or_gate3_propa
     [] (a_or3=1) & (c_or3=0) & (p3=0) & (m3=0) & (v2=1) & (t3<max_t3) -> 0.1: (a_or3'=1) + 0.9: (p3'=1) & (t3'=max(t1,t2)+1);
     [] (b_or3=1) & (c_or3=0) & (p3=0) & (m3=0) & (v1=1) & (t3<max_t3) -> 0.1: (b_or3'=1) + 0.9: (p3'=1) & (t3'=max(t1,t2)+1);
 
@@ -176,7 +177,7 @@ module or_gate5
     [] (p5=1) & (b_or5=1) & (c_or5=0) & (t5<max_t3) -> (c_or5'=1) & (v5'=1) & (t5'=t5+3);
 endmodule
 
-module or_gate6
+module or_gate6_mask
     [] (a_or6=1) & (c_or6=0) & (p6=0) & (m6=0) & (v5=1) & (t6<max_t6) -> 0.1: (m6'=1) & (t6'=max(t4,t5)+2) & (a_or6'=0) + 0.9: (a_or6'=1);
     [] (b_or6=1) & (c_or6=0) & (p6=0) & (m6=0) & (v4=1) & (t6<max_t6) -> 0.1: (m6'=1) & (t6'=max(t4,t5)+2) & (b_or6'=0) + 0.9: (b_or6'=1);
 
@@ -186,7 +187,7 @@ module or_gate6
     & (t4'=t6) & (t5'=t6);
 endmodule
 
-module or_gate6_bis
+module or_gate6_propa
     [] (a_or6=1) & (c_or6=0) & (p6=0) & (m6=0) & (v5=1) & (t6<max_t6) -> 0.1: (a_or6'=1) + 0.9: (p6'=1) & (t6'=max(t4,t5)+2);
     [] (b_or6=1) & (c_or6=0) & (p6=0) & (m6=0) & (v4=1) & (t6<max_t6) -> 0.1: (b_or6'=1) + 0.9: (p6'=1) & (t6'=max(t4,t5)+2);
 
@@ -194,7 +195,7 @@ module or_gate6_bis
     [] (p6=1) & (b_or6=1) & (c_or6=0) & (t6<max_t6) -> (c_or6'=1) & (v6'=1);
 endmodule
 
-module or_gate7
+module or_gate7_mask
     [] (or7=1) & (c_or3=0) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> 0.25: (b_or7'=1) & (or7'=2) + 0.75: (or7'=1);
     [] (or7=1) & (c_or3=1) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> (a_or7'=1) & (or7'=2);
     [] (a_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (m7'=1) & (t7'=t3+1) & (a_or7'=0) + 0.9: (a_or7'=1);
@@ -207,7 +208,7 @@ module or_gate7
     & (t1'=t7) & (t2'=t7);
 endmodule
 
-module or_gate7_bis
+module or_gate7_propa
     [] (or7=1) & (c_or3=0) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> 0.25: (b_or7'=1) & (or7'=2) + 0.75: (or7'=1);
     [] (a_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (a_or7'=1) + 0.9: (p7'=1) & (t7'=t3+1);
     [] (b_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (b_or7'=1) + 0.9: (p7'=1) & (t7'=t3+1);
@@ -217,7 +218,7 @@ module or_gate7_bis
 endmodule
 
 
-module or_gate8
+module or_gate8_mask
     [] (a_or8=1) & (c_or8=0) & (p8=0) & (m8=0) & (v7=1) & (tf<max_tf) -> 0.1: (m8'=1) & (tf'=max(t6,t7)+2) & (a_or8'=0) + 0.9: (a_or8'=1);
     [] (b_or8=1) & (c_or8=0) & (p8=0) & (m8=0) & (v6=1) & (tf<max_tf) -> 0.1: (m8'=1) & (tf'=max(t6,t7)+2) & (b_or8'=0) + 0.9: (b_or8'=1);
 
@@ -232,7 +233,7 @@ module or_gate8
     & (t1'=tf) & (t2'=tf) & (t4'=tf) & (t5'=tf);
 endmodule
 
-module or_gate8_bis
+module or_gate8_propa
     [] (a_or8=1) & (c_or8=0) & (p8=0) & (m8=0) & (v7=1) & (tf<max_tf) -> 0.1: (a_or8'=1) + 0.9: (p8'=1) & (tf'=max(t6,t7)+2);
     [] (b_or8=1) & (c_or8=0) & (p8=0) & (m8=0) & (v6=1) & (tf<max_tf) -> 0.1: (b_or8'=1) + 0.9: (p8'=1) & (tf'=max(t6,t7)+2);
 

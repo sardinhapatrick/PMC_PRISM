@@ -8,7 +8,7 @@ const max_t5 = 20;
 const max_t6 = 20;
 const max_t7 = 20;
 const max_tf = 20;
-const marge = 50;
+const marge = 5;
 
 global t1: [0..max_t1+marge] init 0;
 global t2: [0..max_t2+marge] init 0;
@@ -196,8 +196,8 @@ module or_gate6_propa
 endmodule
 
 module or_gate7_mask
-    [] (or7=1) & (c_or3=0) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> 0.25: (b_or7'=1) & (or7'=2) + 0.75: (or7'=1);
     [] (or7=1) & (c_or3=1) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> (a_or7'=1) & (or7'=2);
+    [] (or7=1) & (c_or3=1) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> 0.25: (b_or7'=1) & (or7'=2) + 0.75: (or7'=1);
     [] (a_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (m7'=1) & (t7'=t3+1) & (a_or7'=0) + 0.9: (a_or7'=1);
     [] (b_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (m7'=1) & (t7'=t3+1) & (b_or7'=0) + 0.9: (b_or7'=1);
 
@@ -209,7 +209,6 @@ module or_gate7_mask
 endmodule
 
 module or_gate7_propa
-    [] (or7=1) & (c_or3=0) & (b_or7=0) & (c_or7=0) & (m7=0) & (p7=0) -> 0.25: (b_or7'=1) & (or7'=2) + 0.75: (or7'=1);
     [] (a_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (a_or7'=1) + 0.9: (p7'=1) & (t7'=t3+1);
     [] (b_or7=1) & (or7=2) & (c_or7=0) & (p7=0) & (m7=0) & (t7<max_t7) -> 0.1: (b_or7'=1) + 0.9: (p7'=1) & (t7'=t3+1);
 

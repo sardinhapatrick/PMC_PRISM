@@ -1,8 +1,0 @@
-const int x;
-
-// event @input or1 cause fail system
-P=? [ F a_or1=1 & tle=1 ]
-P=? [ F b_or1=1 & tle=1 ]
-
-P=? [ F a_or2=1 & tle=1 ]
-P=? [ F b_or2=1 & tle=1 ]
